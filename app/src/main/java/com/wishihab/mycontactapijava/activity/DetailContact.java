@@ -18,8 +18,9 @@ import com.wishihab.mycontactapijava.R;
 
 public class DetailContact extends AppCompatActivity {
 
-    private String txtNamei, txtAgei, txtGenderi, txtEmaili, txtPhonei, txtCelli, txtLocationi, txtPictureLargei;
+    private String txtPosition, txtNamei, txtAgei, txtGenderi, txtEmaili, txtPhonei, txtCelli, txtLocationi, txtPictureLargei;
     private TextView txtName, txtAge, txtGender, txtEmail, txtPhone, txtCell, txtLocation;
+    private Button butDelete;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -34,6 +35,7 @@ public class DetailContact extends AppCompatActivity {
         getSupportActionBar().setTitle("Rincian Kontak");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        txtPosition = getIntent().getStringExtra("txtPosition");
         txtNamei = getIntent().getStringExtra("txtName");
         txtAgei = getIntent().getStringExtra("txtAge");
         txtGenderi = getIntent().getStringExtra("txtGender");
@@ -53,6 +55,7 @@ public class DetailContact extends AppCompatActivity {
         txtPhone = (TextView)findViewById(R.id.txtPhone);
         txtCell = (TextView)findViewById(R.id.txtCell);
         txtLocation = (TextView)findViewById(R.id.txtLocation);
+        butDelete = (Button) findViewById(R.id.butDelete);
 
         txtName.setText(txtNamei);
         txtAge.setText(txtAgei);
@@ -61,6 +64,12 @@ public class DetailContact extends AppCompatActivity {
         txtPhone.setText(txtPhonei);
         txtCell.setText(txtCelli);
         txtLocation.setText(txtLocationi);
+
+        butDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
 
     }

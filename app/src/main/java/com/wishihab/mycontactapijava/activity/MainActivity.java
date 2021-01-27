@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<CRandomUser> arrayRandomUser;
     private AdapterMainUser adapterMain;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(MainActivity.this, "OnResume", Toast.LENGTH_SHORT).show();
+
+    }
 
 
     @Override
@@ -56,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        arrayMainUser = new ArrayList<>();
 
         listMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -63,34 +63,33 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                CRandomUser temp = arrayRandomUser.get(position);
-//                Intent i = new Intent(AddContactActivity.this, DetailContact.class);
-//                i.putExtra("txtName", temp.getName());
-//                i.putExtra("txtAge", temp.getAge());
-//                i.putExtra("txtGender", temp.getGender());
-//                i.putExtra("txtEmail", temp.getEmail());
-//                i.putExtra("txtPhone", temp.getPhone());
-//                i.putExtra("txtCell", temp.getCell());
-//                i.putExtra("txtLocation", temp.getLocation());
-//                i.putExtra("txtPictureLarge", temp.getPicturelarge());
-//                startActivity(i);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(AddContactActivity.this);
-                builder.setTitle("Tambahkan");
-                builder.setMessage("Anda yakin ingin menambahkan.");
-
+                builder.setTitle("Informasi");
+                builder.setMessage("TIDAK artinya menghapus, YA artinya lihat detail.");
                 builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing but close the dialog
-                        arrayMainUser = new ArrayList<>();
+//                        arrayMainUser = new ArrayList<>();
+//                        CRandomUser temp = arrayRandomUser.get(position);
+//                        CMainUser cMain = new CMainUser(temp.getName(), temp.getAge(), temp.getGender(), temp.getLocation(), temp.getEmail(), temp.getPhone(), temp.getCell(), temp.getPicturelarge(), temp.getPicturethum());
+//
+//                        arrayMainUser.add(cMain);
                         CRandomUser temp = arrayRandomUser.get(position);
-                        CMainUser cMain = new CMainUser(temp.getName(), temp.getAge(), temp.getGender(), temp.getLocation(), temp.getEmail(), temp.getPhone(), temp.getCell(), temp.getPicturelarge(), temp.getPicturethum());
+                        Intent i = new Intent(AddContactActivity.this, DetailContact.class);
+                        i.putExtra("txtPosition", arrayRandomUser.get(position).toString());
+                        i.putExtra("txtName", temp.getName());
+                        i.putExtra("txtAge", temp.getAge());
+                        i.putExtra("txtGender", temp.getGender());
+                        i.putExtra("txtEmail", temp.getEmail());
+                        i.putExtra("txtPhone", temp.getPhone());
+                        i.putExtra("txtCell", temp.getCell());
+                        i.putExtra("txtLocation", temp.getLocation());
+                        i.putExtra("txtPictureLarge", temp.getPicturelarge());
+                        startActivity(i);
 
-                        arrayMainUser.add(cMain);
                         dialog.dismiss();
-                        finish();
-
                     }
                 });
 
@@ -98,6 +97,9 @@ public class AddContactActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        arrayRandomUser.get(position);
+                        arrayRandomUser.remove(position);
+                        adapter.notifyDataSetChanged();
                         // Do nothing
                         dialog.dismiss();
                     }
@@ -130,7 +132,7 @@ public class AddContactActivity extends AppCompatActivity {
                     String gender = item.getString("gender");
 
                     JSONObject locationdetail = item.getJSONObject("location");
-                    String location = locationdetail.getString("postcode") + locationdetail.getString("country");
+                    String location = locationdetail.getString("postcode") + " " + locationdetail.getString("country");
                     String email = item.getString("email");
 
                     JSONObject dob = item.getJSONObject("dob");
@@ -144,6 +146,7 @@ public class AddContactActivity extends AppCompatActivity {
 
                     CRandomUser c = new CRandomUser(name, age, gender, location, email, phone, cell, picturelarge, picturethum);
                     arrayRandomUser.add(c);
+
 
                     adapter = new AdapterRandomUser(getApplicationContext(), arrayRandomUser);
                     listcontact.setAdapter(adapter);
