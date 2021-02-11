@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Kelola Kontak");
 
-        listMain = (ListView)findViewById(R.id.list_main);
+        listMain = findViewById(R.id.list_main);
         listMain.setTextFilterEnabled(true);
 
-        butAddContact = (Button)findViewById(R.id.butAddContact);
+        butAddContact = findViewById(R.id.butAddContact);
         butAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

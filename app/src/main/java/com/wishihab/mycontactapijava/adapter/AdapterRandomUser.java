@@ -1,5 +1,6 @@
 package com.wishihab.mycontactapijava.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,7 +21,6 @@ public class AdapterRandomUser extends BaseAdapter {
     Context context;
     ArrayList<CRandomUser> randomUser;
     private String id;
-    private String statusnih = "0";
 
     public AdapterRandomUser(Context context, ArrayList<CRandomUser> randomUser) {
         this.context = context;
@@ -42,6 +42,7 @@ public class AdapterRandomUser extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -51,16 +52,16 @@ public class AdapterRandomUser extends BaseAdapter {
         }
 
 
-        TextView txtName = (TextView) convertView.findViewById(R.id.txtName);
-        TextView txtPhone = (TextView) convertView.findViewById(R.id.txtPhone);
-        TextView txtEmail = (TextView) convertView.findViewById(R.id.txtEmail);
+        TextView txtName = convertView.findViewById(R.id.txtName);
+        TextView txtPhone = convertView.findViewById(R.id.txtPhone);
+        TextView txtEmail = convertView.findViewById(R.id.txtEmail);
         String imageUri = randomUser.get(position).getPicturethum();
 
         id = randomUser.get(position).getEmail();
 
-        ImageView imgLogo = (ImageView)convertView.findViewById(R.id.imgthum);
+        ImageView imgLogo = convertView.findViewById(R.id.imgthum);
 
-        Picasso.with(imgLogo.getContext()).load(imageUri).noFade().into(imgLogo);
+        Picasso.get().load(imageUri).noFade().into(imgLogo);
 
         txtName.setText(randomUser.get(position).getName());
         txtPhone.setText(randomUser.get(position).getPhone());

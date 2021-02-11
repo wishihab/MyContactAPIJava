@@ -45,17 +45,17 @@ public class DetailContact extends AppCompatActivity {
         txtLocationi = getIntent().getStringExtra("txtLocation");
         txtPictureLargei = getIntent().getStringExtra("txtPictureLarge");
 
-        ImageView ivBasicImage = (ImageView) findViewById(R.id.pictureLarge);
+        ImageView ivBasicImage = findViewById(R.id.pictureLarge);
         Picasso.with(DetailContact.this).load(txtPictureLargei).noFade().into(ivBasicImage);
 
-        txtName = (TextView)findViewById(R.id.txtName);
-        txtAge = (TextView)findViewById(R.id.txtAge);
-        txtGender = (TextView)findViewById(R.id.txtGender);
-        txtEmail = (TextView)findViewById(R.id.txtEmail);
-        txtPhone = (TextView)findViewById(R.id.txtPhone);
-        txtCell = (TextView)findViewById(R.id.txtCell);
-        txtLocation = (TextView)findViewById(R.id.txtLocation);
-        butDelete = (Button) findViewById(R.id.butDelete);
+        txtName = findViewById(R.id.txtName);
+        txtAge = findViewById(R.id.txtAge);
+        txtGender = findViewById(R.id.txtGender);
+        txtEmail = findViewById(R.id.txtEmail);
+        txtPhone = findViewById(R.id.txtPhone);
+        txtCell = findViewById(R.id.txtCell);
+        txtLocation = findViewById(R.id.txtLocation);
+        butDelete = findViewById(R.id.butDelete);
 
         txtName.setText(txtNamei);
         txtAge.setText(txtAgei);

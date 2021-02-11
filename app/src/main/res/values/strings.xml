@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MyContactAPIJava</string>
+    <string name="delete_contact">HAPUS KONTAK</string>
+    <string name="add_contact">TAMBAH KONTAK</string>
+    <string name="ages">Age : </string>
+    <string name="gender">Gender : </string>
+    <string name="email">Email : </string>
+    <string name="telephone">Phone : </string>
+    <string name="cell">Cell : </string>
+    <string name="location">Location : </string>
+
+
+
+    <string name="img_desc">Deskripsi Gambar</string>
+
 </resources>

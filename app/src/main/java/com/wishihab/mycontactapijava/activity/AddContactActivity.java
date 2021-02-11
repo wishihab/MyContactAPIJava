@@ -1,5 +1,6 @@
 package com.wishihab.mycontactapijava.activity;
 
+import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -33,8 +34,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AddContactActivity extends AppCompatActivity {
-    private ListView listcontact;
-    private ListView listMain;
+    private ListView list_contact;
     private ArrayList<CRandomUser> arrayRandomUser, arr;
     private ArrayList<CMainUser> arrayMainUser, arrMain;
     private AdapterRandomUser adapter;
@@ -52,14 +52,14 @@ public class AddContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcontact);
-        getSupportActionBar().setTitle("Tambah Kontak");
+        getSupportActionBar().setTitle("Add Contact");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        listcontact = (ListView)findViewById(R.id.list_contact);
-        listcontact.setTextFilterEnabled(true);
+        list_contact = findViewById(R.id.list_contact);
+        list_contact.setTextFilterEnabled(true);
 
 
-        listcontact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -136,7 +136,7 @@ public class AddContactActivity extends AppCompatActivity {
                     String email = item.getString("email");
 
                     JSONObject dob = item.getJSONObject("dob");
-                    String age = dob.getString("age").toString();
+                    String age = dob.getString("age");
                     String phone = item.getString("phone");
                     String cell = item.getString("cell");
 
@@ -149,7 +149,7 @@ public class AddContactActivity extends AppCompatActivity {
 
 
                     adapter = new AdapterRandomUser(getApplicationContext(), arrayRandomUser);
-                    listcontact.setAdapter(adapter);
+                    list_contact.setAdapter(adapter);
                 }
 
 

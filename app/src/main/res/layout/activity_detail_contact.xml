@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,6 +18,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:contentDescription="@string/img_desc"
                     android:scaleType="fitXY"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -46,10 +45,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Age : "
+                    android:text="@string/ages"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -67,10 +66,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gender : "
+                    android:text="@string/gender"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -89,10 +88,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email : "
+                    android:text="@string/email"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -110,10 +109,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone : "
+                    android:text="@string/telephone"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -132,10 +131,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cell : "
+                    android:text="@string/cell"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -154,10 +153,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Location : "
+                    android:text="@string/location"
                     android:textColor="#424143"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
@@ -179,7 +178,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:id="@+id/butDelete"
-                android:text="HAPUS KONTAK"
+                android:text="@string/delete_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"/>
