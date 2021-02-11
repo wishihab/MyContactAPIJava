@@ -13,15 +13,13 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.wishihab.mycontactapijava.R;
 import com.wishihab.mycontactapijava.dataset.CMainUser;
-import com.wishihab.mycontactapijava.dataset.CRandomUser;
 
 import java.util.ArrayList;
 
 public class AdapterMainUser extends BaseAdapter {
 
-    Context context;
-    ArrayList<CMainUser> mainUser;
-    String id;
+    final Context context;
+    final ArrayList<CMainUser> mainUser;
 
     public AdapterMainUser(Context context, ArrayList<CMainUser> mainUser) {
         this.context = context;
@@ -58,7 +56,6 @@ public class AdapterMainUser extends BaseAdapter {
         TextView txtEmail = convertView.findViewById(R.id.txtEmail);
         String imageUri = mainUser.get(position).getPicturethum();
 
-        id = mainUser.get(position).getEmail();
 
         ImageView imgLogo = convertView.findViewById(R.id.imgthum);
 

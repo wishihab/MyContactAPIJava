@@ -18,9 +18,8 @@ import java.util.ArrayList;
 
 public class AdapterRandomUser extends BaseAdapter {
 
-    Context context;
-    ArrayList<CRandomUser> randomUser;
-    private String id;
+    final Context context;
+    final ArrayList<CRandomUser> randomUser;
 
     public AdapterRandomUser(Context context, ArrayList<CRandomUser> randomUser) {
         this.context = context;
@@ -56,8 +55,6 @@ public class AdapterRandomUser extends BaseAdapter {
         TextView txtPhone = convertView.findViewById(R.id.txtPhone);
         TextView txtEmail = convertView.findViewById(R.id.txtEmail);
         String imageUri = randomUser.get(position).getPicturethum();
-
-        id = randomUser.get(position).getEmail();
 
         ImageView imgLogo = convertView.findViewById(R.id.imgthum);
 

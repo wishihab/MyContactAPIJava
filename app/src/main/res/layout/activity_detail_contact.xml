@@ -179,6 +179,7 @@
                 android:layout_marginRight="10dp"
                 android:id="@+id/butDelete"
                 android:text="@string/delete_contact"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"/>

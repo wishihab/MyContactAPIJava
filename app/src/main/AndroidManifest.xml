@@ -10,11 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyContactAPIJava">
-        <activity android:name=".activity.AddContactActivity">
+        <activity
+            android:name=".activity.AddContactActivity"
+            android:theme="@style/AppTheme"
+            >
         </activity>
-        <activity android:name=".activity.DetailContact">
+        <activity
+            android:name=".activity.DetailContact"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

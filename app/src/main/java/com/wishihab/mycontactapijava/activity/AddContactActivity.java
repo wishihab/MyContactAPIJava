@@ -1,29 +1,20 @@
 package com.wishihab.mycontactapijava.activity;
 
-import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wishihab.mycontactapijava.R;
-import com.wishihab.mycontactapijava.adapter.AdapterMainUser;
 import com.wishihab.mycontactapijava.adapter.AdapterRandomUser;
-import com.wishihab.mycontactapijava.dataset.CMainUser;
 import com.wishihab.mycontactapijava.dataset.CRandomUser;
 
 import org.json.JSONArray;
@@ -31,15 +22,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Random;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class AddContactActivity extends AppCompatActivity {
     private ListView list_contact;
-    private ArrayList<CRandomUser> arrayRandomUser, arr;
-    private ArrayList<CMainUser> arrayMainUser, arrMain;
+    private ArrayList<CRandomUser> arrayRandomUser;
     private AdapterRandomUser adapter;
-    private AdapterMainUser adapterMain;
-    private RequestQueue requestQueue;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,62 +47,47 @@ public class AddContactActivity extends AppCompatActivity {
         list_contact.setTextFilterEnabled(true);
 
 
-        list_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        list_contact.setOnItemClickListener((parent, view, position, id) -> {
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddContactActivity.this);
-                builder.setTitle("Informasi");
-                builder.setMessage("TIDAK artinya menghapus, YA artinya lihat detail.");
-                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddContactActivity.this);
+            builder.setTitle("Informasi");
+            builder.setMessage("TIDAK artinya menghapus, YA artinya lihat detail.");
+            builder.setPositiveButton("YA", (dialog, which) -> {
 
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
-//                        arrayMainUser = new ArrayList<>();
-//                        CRandomUser temp = arrayRandomUser.get(position);
-//                        CMainUser cMain = new CMainUser(temp.getName(), temp.getAge(), temp.getGender(), temp.getLocation(), temp.getEmail(), temp.getPhone(), temp.getCell(), temp.getPicturelarge(), temp.getPicturethum());
-//
-//                        arrayMainUser.add(cMain);
-                        CRandomUser temp = arrayRandomUser.get(position);
-                        Intent i = new Intent(AddContactActivity.this, DetailContact.class);
-                        i.putExtra("txtPosition", arrayRandomUser.get(position).toString());
-                        i.putExtra("txtName", temp.getName());
-                        i.putExtra("txtAge", temp.getAge());
-                        i.putExtra("txtGender", temp.getGender());
-                        i.putExtra("txtEmail", temp.getEmail());
-                        i.putExtra("txtPhone", temp.getPhone());
-                        i.putExtra("txtCell", temp.getCell());
-                        i.putExtra("txtLocation", temp.getLocation());
-                        i.putExtra("txtPictureLarge", temp.getPicturelarge());
-                        startActivity(i);
+                CRandomUser temp = arrayRandomUser.get(position);
+                Intent i = new Intent(AddContactActivity.this, DetailContact.class);
+                i.putExtra("txtPosition", arrayRandomUser.get(position).toString());
+                i.putExtra("txtName", temp.getName());
+                i.putExtra("txtAge", temp.getAge());
+                i.putExtra("txtGender", temp.getGender());
+                i.putExtra("txtEmail", temp.getEmail());
+                i.putExtra("txtPhone", temp.getPhone());
+                i.putExtra("txtCell", temp.getCell());
+                i.putExtra("txtLocation", temp.getLocation());
+                i.putExtra("txtPictureLarge", temp.getPicturelarge());
+                startActivity(i);
 
-                        dialog.dismiss();
-                    }
-                });
+                dialog.dismiss();
+            });
 
-                builder.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("TIDAK", (dialog, which) -> {
+                arrayRandomUser.get(position);
+                arrayRandomUser.remove(position);
+                adapter.notifyDataSetChanged();
+                // Do nothing
+                dialog.dismiss();
+            });
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        arrayRandomUser.get(position);
-                        arrayRandomUser.remove(position);
-                        adapter.notifyDataSetChanged();
-                        // Do nothing
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
+            AlertDialog alert = builder.create();
+            alert.show();
         });
 
-        requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequestRandomUser);
     }
 
-    StringRequest stringRequestRandomUser = new StringRequest(Request.Method.GET, "https://randomuser.me/api?results=10&exc=login,registered,i", new Response.Listener<String>() {
+    final StringRequest stringRequestRandomUser = new StringRequest(Request.Method.GET, "https://randomuser.me/api?results=10&exc=login,registered,i", new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
             try {
@@ -157,10 +130,7 @@ public class AddContactActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-        }
+    }, error -> {
     });
 
 }
